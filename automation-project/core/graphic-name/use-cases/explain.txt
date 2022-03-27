@@ -1,0 +1,1 @@
+Todos os casos de uso de uma entidade devem estar aqui. É uma classe de controle como por exemplo: salvar os dados no db, buscar os dados no sucupira .. entre outros casos de uso

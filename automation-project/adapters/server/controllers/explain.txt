@@ -1,0 +1,1 @@
+As controllers que irão chamar os use cases devem estar neste método e não devem utilizar nenhum adapter. E sim o adapter utilizar esses controladores
