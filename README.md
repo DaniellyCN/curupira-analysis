@@ -34,7 +34,7 @@ A seguir estão os requisitos para aceitarmos a sua pull request e garantir a co
 Abaixo segue a arquitetura geral do projeto:
 
 <div align="center">
-  <img src="https://github.com/yuryalencar/curupira-analysis/blob/main/Robot%20framework.png" alt="Arquitetura Geral">
+  <img src="https://github.com/yuryalencar/curupira-analysis/blob/docs/define-general-architecture/docs/general-architecture.png" alt="Arquitetura Geral">
 </div>
 
 > Objetivo do projeto de automação.
