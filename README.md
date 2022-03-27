@@ -52,7 +52,7 @@ Realizar a compilação dos dados por gráfico.
 Apresentar os dados sumarizados de acordo com o escolhido pelo usuário final.
 ```
 
-**_Todas as requisições devem respeitar a arquitetura REST. _**
+**_Todas as requisições devem respeitar a arquitetura REST._**
 
 ## 📫 Contribuindo para o Curupira Analysis
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
