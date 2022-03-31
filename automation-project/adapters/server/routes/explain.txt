@@ -1,0 +1,1 @@
+As rotas devem ser descritas neste arquivo e utilizado pelo servidor que for utilizar.

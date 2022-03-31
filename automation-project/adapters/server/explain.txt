@@ -1,0 +1,1 @@
+Toda comunicação com um server deve respeitar uma interface que deve ser criada aqui.

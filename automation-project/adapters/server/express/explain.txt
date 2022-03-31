@@ -1,0 +1,1 @@
+Toda comunicação com o express deve ser criada dentro deste diretório implementando a interface dentro do diretório server
