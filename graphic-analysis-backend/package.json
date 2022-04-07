@@ -1,0 +1,22 @@
+{
+  "name": "graphic-analysis-backend",
+  "version": "0.1.0",
+  "description": "This is a backend to analysis graphical",
+  "main": "index.js",
+  "repository": "sample",
+  "author": "Teasy Solutions",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "deploy": "sls deploy",
+    "invoke:hello": "sls invoke -f hello --path request-mock/create-user.json",
+    "invoke-local:hello-path": "sls invoke local -f hello --path request-mock/create-user.json",
+    "invoke-local:hello": "sls invoke local -f hello"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.42.0",
+    "@aws-sdk/lib-dynamodb": "^3.42.0",
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.1"
+  }
+}
