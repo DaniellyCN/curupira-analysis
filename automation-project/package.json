@@ -1,0 +1,15 @@
+{
+  "name": "automation-project",
+  "version": "1.0.0",
+  "description": "Project to extract data of the another platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./core/index.js"
+  },
+  "repository": "https://github.com/yuryalencar/curupira-analysis",
+  "author": "Yury Alencar",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^13.5.2"
+  }
+}
