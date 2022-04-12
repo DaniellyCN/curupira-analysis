@@ -1,4 +1,4 @@
-const { loadUniversities } = require('./load-universities/use-cases');
+const { loadUniversities } = require('./graphics/load-universities/use-cases');
 
 loadUniversities({
   name: 'INTERDISCIPLINAR',

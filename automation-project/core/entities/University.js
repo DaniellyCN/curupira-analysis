@@ -1,29 +1,37 @@
-class KnowledgeArea {
+class University {
   /**
    * Method to create an university instance.
    *
-   * @param {*} name your full name for example: ENGENHARIA DE SOFTWARE
-   * @param {*} evaluationArea your full name for example: CIÊNCIA DA COMPUTAÇÃO
+   * @param {*} name your full name for example: Universidade Federal do Pampa
+   * @param {*} initials your initials for example: UNIPAMPA
    */
-  constructor(name, evaluationArea) {
-    this.name = name;
-    this.evaluationArea = evaluationArea;
+  constructor(name, initials) {
+    this.name = name.replace('\n', '').trim();
+    this.initials = initials.replace('\n', '').trim();
+  }
+
+  setUF(uf) {
+    this.uf = uf;
   }
 
   setMasterDegreeAmount(amount) {
-    this.masterDegreeAmount = Number(amount.replace('\n', '').trim());
+    this.masterDegreeAmount = amount;
   }
 
   setProfessionalMasterDegreeAmount(amount) {
-    this.professionalMasterDegreeAmount =  Number(amount.replace('\n', '').trim());
+    this.professionalMasterDegreeAmount = amount;
   }
 
   setDoctorateDegreeAmount(amount) {
-    this.doctorateDegreeAmount =  Number(amount.replace('\n', '').trim());
+    this.doctorateDegreeAmount = amount;
   }
 
   setProfessionalDoctorateDegreeAmount(amount) {
-    this.professionalDoctorateDegreeAmount =  Number(amount.replace('\n', '').trim());
+    this.professionalDoctorateDegreeAmount = amount;
+  }
+
+  getUF() {
+    return this.uf;
   }
 
   getMasterDegreeAmount() {
@@ -52,4 +60,4 @@ class KnowledgeArea {
   }
 }
 
-module.exports = KnowledgeArea;
+module.exports = University;

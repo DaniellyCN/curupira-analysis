@@ -42,7 +42,7 @@ class Puppeteer extends Automation {
     new Error('Type informed not valid, use: xpath or cssSelector');
   }
 
-  async getTableContentByXpath(selector) {
+  async getTableContentByXpath(selector, waiting = true) {
     log('Loading table content of the page');
     await this.page.waitForXPath(selector);
     await this.sleep(5000);
@@ -54,6 +54,14 @@ class Puppeteer extends Automation {
       texts.push(line);
     }
     return texts;
+  }
+
+  async getAmountElementsByXpath(selector) {
+    log('Counting amount of the itens');
+    await this.page.waitForXPath(selector);
+    await this.sleep(5000);
+    const elements = await this.page.$x(selector);
+    return elements.length;
   }
 
   async finishAutomation() {
