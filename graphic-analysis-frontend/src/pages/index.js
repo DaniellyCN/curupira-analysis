@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
-import BlogCard from "../components/dashboard/BlogCard";
-import SalesOverview from "../components/dashboard/SalseOverview";
-import DailyActivity from "../components/dashboard/DailyActivity";
-import ProductPerfomance from "../components/dashboard/ProductPerfomance";
+import BlogCard from "../templates/dashboard/BlogCard";
+import SalesOverview from "../templates/dashboard/SalseOverview";
+import DailyActivity from "../templates/dashboard/DailyActivity";
+import ProductPerfomance from "../templates/dashboard/ProductPerfomance";
 
 export default function Index() {
   return (

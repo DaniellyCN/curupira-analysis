@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Rating, Box, Typography } from "@mui/material";
-import BaseCard from "../components/baseCard/BaseCard";
+import BaseCard from "../molecules/BaseCard";
 import FeatherIcon from "feather-icons-react";
 
 const labels = {

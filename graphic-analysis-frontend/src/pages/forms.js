@@ -11,7 +11,7 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
-import BaseCard from "../components/baseCard/BaseCard";
+import BaseCard from "../molecules/BaseCard";
 
 const Forms = () => {
   return (
