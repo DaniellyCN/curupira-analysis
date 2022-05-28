@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import dynamic from "next/dynamic";
-import BaseCard from "../../molecules/BaseCard";
+import BaseCard from "../../../molecules/BaseCard";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const SalesOverview = () => {
