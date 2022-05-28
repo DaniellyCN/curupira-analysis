@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import BlogCard from "../templates/dashboard/BlogCard";
 import SalesOverview from "../templates/dashboard/graph/SalseOverview";
-import ArticlesByLanguage from "../templates/dashboard/graph/ArticlesByLanguage";
+import ArticlesByLanguage from "../templates/dashboard/graph/ArticlesByLanguage/ArticlesByLanguage";
 import DailyActivity from "../templates/dashboard/DailyActivity";
 import ProductPerfomance from "../templates/dashboard/ProductPerfomance";
 
