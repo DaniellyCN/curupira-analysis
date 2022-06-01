@@ -48,7 +48,7 @@ const loadUniversities = async generalArea => {
   console.log(evaluationArea);
   var json = JSON.stringify(evaluationArea);
   fs.writeFile(
-    'myjsonfile.json',
+    `data/${new Date().getFullYear()}_universities.json`,
     json,
     'utf8',
     function (err) {
