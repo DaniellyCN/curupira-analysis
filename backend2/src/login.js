@@ -3,25 +3,25 @@ const JWT_KEY = process.env.JWT_KEY
 const { sign } = require('jsonwebtoken')
 
 const login = async event => {
-    console.log('Login invoked..', new Date.toString(), event.body)
+    console.log('Login invoked..', new Date(), event.body)
 
     const {
         username,
-        password 
+        password
     } = JSON.parse(event.body)
 
     const validUser = users.find(
         user => user.username.toLowerCase() === username.toLowerCase() &&
-        user.password === password
+            user.password === password
     )
 
-    if(!validUser) {
-        return{
-            statusCode: 401,
-            body: JSON.stringify({
-                message: 'Unauthorized',
-            })
-        }
+    if (!validUser) {
+    	return {
+        statusCode: 401,
+        body: JSON.stringify({
+        	message: 'Unauthorized',
+      	})
+      }
     }
 
     const signUser = {
@@ -33,7 +33,7 @@ const login = async event => {
     const token = sign({
         user: signUser,
         //5 minutes
-    }, JWT_KEY, { expiresIn: '5m'})
+    }, JWT_KEY, { expiresIn: '5m' })
 
     return {
         statusCode: 200,

@@ -1,3 +1,3 @@
 module.exports =  {
-  hello: require('./functions/handler'),
+  login: require('./functions/login'),
 };
