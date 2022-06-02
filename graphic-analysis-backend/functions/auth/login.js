@@ -1,15 +1,9 @@
 'use strict';
 
-const { compare, crypt } = require('../utils/password');
-const { mountToken } = require('../utils/token');
-const { findUserByUsername } = require('../adapters/database/users');
-
-const invalidUserResponse = {
-  statusCode: 401,
-  body: JSON.stringify({
-    message: 'Usuário ou senha inválidos !',
-  }),
-};
+const { compare } = require('../../utils/password');
+const { mountToken } = require('../../utils/token');
+const { invalidUserResponse } = require('../../utils/responses');
+const { findUserByUsername } = require('../../adapters/database/users');
 
 const login = () => {
   return async function (event) {

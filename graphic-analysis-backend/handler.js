@@ -1,3 +1,4 @@
 module.exports =  {
-  login: require('./functions/login'),
+  login: require('./functions/auth/login'),
+  thesisByLanguage: require('./functions/graphics/thesisByLanguage'),
 };

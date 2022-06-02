@@ -24,6 +24,15 @@ functions:
     layers:
       - { Ref: NodeModulesLambdaLayer }
 
+  thesisByLanguage:
+    handler: handler.thesisByLanguage
+    events:
+      - httpApi:
+          path: /thesis-by-language
+          method: get
+    layers:
+      - { Ref: NodeModulesLambdaLayer }
+
 layers:
   NodeModules:
     path: layer
