@@ -8,6 +8,7 @@ import theme from "../theme/theme";
 import createEmotionCache from "../createEmotionCache";
 import FullLayout from "../organisms/FullLayout";
 import "../styles/style.css";
+import Login from "../organisms/login";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -22,9 +23,10 @@ export default function MyApp(props) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <FullLayout>
+       {/* <FullLayout>
           <Component {...pageProps} />
-        </FullLayout>
+        </FullLayout> */}
+        <Login />
       </ThemeProvider>
     </CacheProvider>
   );
