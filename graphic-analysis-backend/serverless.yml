@@ -9,6 +9,8 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: us-east-1
   memorySize: 256
+  httpApi:
+    cors: true
   tracing:
     apiGateway: true
   environment:
