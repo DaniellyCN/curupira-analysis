@@ -1,0 +1,1 @@
+export const baseUrl = "https://ijp791wom7.execute-api.us-east-1.amazonaws.com/";
