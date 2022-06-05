@@ -10,7 +10,8 @@ const ArticlesByLanguage = () => {
   const fetchGraphData = async () => {
     try {
       const response = await fetch(
-        baseUrl + "thesis-by-language",
+        `${baseUrl}thesis-by-language`,
+
         {
           headers: {
             "Content-Type": "application/json",
