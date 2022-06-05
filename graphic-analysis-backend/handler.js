@@ -1,3 +1,4 @@
 module.exports =  {
-  hello: require('./functions/handler'),
+  login: require('./functions/auth/login'),
+  thesisByLanguage: require('./functions/graphics/thesisByLanguage'),
 };

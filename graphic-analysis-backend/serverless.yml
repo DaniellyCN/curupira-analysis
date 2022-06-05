@@ -6,11 +6,35 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  memorySize: 256
+  tracing:
+    apiGateway: true
+  environment:
+    JWT_KEY: abc1231
 
 functions:
-  hello:
-    handler: handler.hello
+  login:
+    handler: handler.login
     events:
       - httpApi:
-          path: /
+          path: /login
+          method: post
+    layers:
+      - { Ref: NodeModulesLambdaLayer }
+
+  thesisByLanguage:
+    handler: handler.thesisByLanguage
+    events:
+      - httpApi:
+          path: /thesis-by-language
           method: get
+    layers:
+      - { Ref: NodeModulesLambdaLayer }
+
+layers:
+  NodeModules:
+    path: layer
+    compatibleRuntimes: 
+      - nodejs14.x

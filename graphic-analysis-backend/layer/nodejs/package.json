@@ -1,0 +1,13 @@
+{
+  "name": "nodejs",
+  "version": "0.1.0",
+  "description": "This is a backend to analysis graphical",
+  "main": "index.js",
+  "repository": "sample",
+  "author": "Yury Alencar",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
