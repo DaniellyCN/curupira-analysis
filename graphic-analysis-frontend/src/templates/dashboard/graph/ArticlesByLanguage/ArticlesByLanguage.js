@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import BaseCard from "../../../../molecules/BaseCard";
-import { data } from "./data/graph_data";
+import { baseUrl } from "../../../../config/api";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ArticlesByLanguage = () => {
+  const [fetchedGraphData, setFetchedGraphData] = React.useState([]);
+
+  const fetchGraphData = async () => {
+    try {
+      const response = await fetch(
+        `${baseUrl}thesis-by-language`,
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoieXVyeWFsZW5jYXIiLCJwZXJtaXNzaW9ucyI6WyJ0aGVzaXMtYnktbGFuZ3VhZ2U6bGlzdCJdfSwiaWF0IjoxNjU0NDYzMjAyLCJleHAiOjE2NTQ0NjY4MDJ9.gmu0Yhs58FAf5n9JtzsmC_8VmuNR6Jcz8RzlFbzSRz4",
+              // TO-DO: Replace with real token
+          },
+        }
+      );
+      const data = await response.json();
+      setFetchedGraphData(data);
+    
+    } catch (error) {
+      console.log(error);
+      // TO-DO: Handle error
+    }
+  };
+
+  useEffect(() => {
+    fetchGraphData();
+  }, []);
+
   const options = {
-    series:  [
+    series: [
       {
-      name: "Português",
-      data: data.map((item) => ( item.portuguese )),
+        name: "Português",
+        data: fetchedGraphData.map((item) => item.portuguese),
       },
       {
         name: "Inglês",
-        data: data.map((item) => ( item.english )),
+        data: fetchedGraphData.map((item) => item.english),
       },
     ],
     options: {
@@ -49,9 +78,7 @@ const ArticlesByLanguage = () => {
       },
       xaxis: {
         type: "text",
-        categories: 
-          data.map((item) => item.instituition),
-        
+        categories: fetchedGraphData.map((item) => item.instituition),
       },
       legend: {
         position: "bottom",
@@ -65,12 +92,16 @@ const ArticlesByLanguage = () => {
 
   return (
     <BaseCard title="Teses por idioma">
-      <Chart
-        options={options.options}
-        series={options.series}
-        type="bar"
-        height={500}
-      />
+      {fetchedGraphData.length > 0 ? (
+        <Chart
+          options={options.options}
+          series={options.series}
+          type="bar"
+          height={500}
+        />
+      ) : (
+        <h5>Carregando...</h5>
+      )}
     </BaseCard>
   );
 };
