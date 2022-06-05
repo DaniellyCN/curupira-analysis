@@ -2,7 +2,7 @@ const getUsers = () => [
   {
     username: 'yuryalencar',
     password: '$2a$10$FRXeMo65p043QqwSNAGQaOQrh6ldXnvvi9TUPTB8AmNd6NTrE.FU6',
-    permissions: [''],
+    permissions: ['thesis-by-language:list'],
   },
 ];
 
