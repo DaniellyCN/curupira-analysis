@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "instituition": "PUC-MG-I-4",
+      "portuguese": 1,
+      "english": 0
+    },
+    {
+      "instituition": "UFSCAR-CC-4",
+      "portuguese": 36,
+      "english": 0
+    },
+    {
+      "instituition": "UFSCAR-CC-4",
+      "portuguese": 37,
+      "english": 2
+    },
+    {
+      "instituition": "UFSCAR-CC-4",
+      "portuguese": 31,
+      "english": 3
+    }
+  ]
+}
