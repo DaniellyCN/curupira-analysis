@@ -1,19 +1,10 @@
 import React, { useState, useContext } from "react";
-import {LoginContext} from '../context/LoginContext';
-import {
-  Grid,
-  Stack,
-  TextField,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-  Button,
-} from "@mui/material";
+import { LoginContext } from "../context/LoginContext";
+import { Stack, TextField, Button, Divider } from "@mui/material";
 import styles from "../styles/login/styles.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Router from "next/router";
-
 
 const FormLogin = () => {
   const [username, setUsername] = useState("");
@@ -23,7 +14,6 @@ const FormLogin = () => {
   async function handleLogin(event) {
     event.preventDefault();
     toast("Autenticação está sendo validada");
-   
 
     try {
       const response = await fetch(
@@ -41,18 +31,16 @@ const FormLogin = () => {
       );
       const data = await response.json();
       const { token, message } = data;
-        
+
       setToken(token);
 
-     if(response.status === 200){
-      toast.success("Login efetuado com sucesso :D", message, token);
-      Router.push("/home");
-    }else if(response.status === 401){
-      toast.error("Senha ou Username incorreto :(", err);
-      console.log(err);
-    }
-
-
+      if (response.status === 200) {
+        toast.success("Login efetuado com sucesso :D", message, token);
+        Router.push("/home");
+      } else if (response.status === 401) {
+        toast.error("Senha ou Username incorreto :(", err);
+        console.log(err);
+      }
     } catch (err) {
       toast.error("Algo deu errado :(", err);
       console.log(err);
@@ -60,12 +48,13 @@ const FormLogin = () => {
   }
 
   return (
-    <Grid item xs={5} lg={5}>
-      <Stack spacing={3}>
-        <h3>Bem vindo a Curupira</h3>
+    <>
+      <Stack spacing={2}>
+        <h4>Bem vindo ao Curupira</h4>
+        <br />
         <TextField
           id="email-basic"
-          label="Username"
+          label="Usuário"
           variant="outlined"
           className={styles.textInput}
           onChange={(event) => setUsername(event.target.value)}
@@ -78,23 +67,15 @@ const FormLogin = () => {
           className={styles.textInput}
           onChange={(event) => setPassword(event.target.value)}
         />
-
-        <FormGroup>
-          
-        </FormGroup>
+        <br />
+        <br />
+        <Button variant="contained" onClick={handleLogin} className={styles.button}>
+          Entrar
+        </Button>
       </Stack>
-      <br />
 
-      <Button
-        variant="contained"
-        onClick={handleLogin}
-        className={styles.button}
-      >
-        Entre
-      </Button>
-
-      <ToastContainer autoClose={5000}/>
-    </Grid>
+      <ToastContainer autoClose={5000} />
+    </>
   );
 };
 
