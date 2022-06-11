@@ -1,4 +1,4 @@
-const { log, error } = require('../../../../adapters/logger');
+const { log } = require('../../../../adapters/logger');
 const { writeFile, normalizeText } = require('../../../../adapters/file');
 const automation = require('../../../../adapters/automation/puppeteer');
 
@@ -7,9 +7,6 @@ const KnowledgeArea = require('../../../entities/KnowledgeArea');
 const University = require('../../../entities/University');
 
 const components = require('../../../components');
-
-// to test json length
-var fs = require('fs');
 
 /**
  * Method to load univesities by course path

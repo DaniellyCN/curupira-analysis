@@ -1,1 +1,0 @@
-Uma classe que tem todos os dados que precisamos para geração de um gráfico em específico.

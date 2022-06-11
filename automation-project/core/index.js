@@ -1,25 +1,15 @@
-const { loadUniversities } = require('./graphics/load-universities/use-cases');
+const { processPrograms, writeFile } = require('../adapters/file');
+
+const loadAndWritePrograms = async () => {
+  const programs = await processPrograms(__dirname + '/../data/lake/programs.csv');
+  writeFile({filename: __dirname + '/../data/processed/programs.json', data: programs })
+}
 
 const load = async () => {
-  await loadUniversities({
-    name: 'INTERDISCIPLINAR',
-    knowledgeAreas: ['INTERDISCIPLINAR'],
-  });
+  const programs = await processPrograms(__dirname + '/../data/lake/programs.csv');
+  console.log(JSON.stringify(programs[0]))
+  return programs;
+}
 
-  await loadUniversities({
-    name: 'CIÊNCIA DA COMPUTAÇÃO',
-    knowledgeAreas: ['CIÊNCIA DA COMPUTAÇÃO'],
-  });
-
-  await loadUniversities({
-    name: 'ENGENHARIAS IV',
-    knowledgeAreas: ['ENGENHARIA BIOMÉDICA'],
-  });
-
-  await loadUniversities({
-    name: 'ENGENHARIAS IV',
-    knowledgeAreas: ['ENGENHARIA ELÉTRICA'],
-  });
-};
-
-load();
+// loadAndWritePrograms();
+load()
