@@ -69,7 +69,8 @@ const FormLogin = () => {
         />
         <br />
         <br />
-        <Button variant="contained" onClick={handleLogin} className={styles.button}>
+        <Button variant="contained" onClick={handleLogin} className={styles.button}
+        disabled={!username || !password || username.length < 3 || password.length < 3}>
           Entrar
         </Button>
       </Stack>
