@@ -9,7 +9,8 @@ import {
   Button,
 } from "@mui/material";
 import { useRouter } from 'next/router'
-import api from "../../services/api";
+import api from "../services/api"
+import styles from "../styles/login/styles.module.css";
 
 const FormLogin = () => {
   const [username, setUsername] = useState("");
@@ -40,11 +41,12 @@ const FormLogin = () => {
   return (
     <Grid item xs={5} lg={5}>
       <Stack spacing={3}>
-        <h3>Bem-Vindo ao Curupira</h3>
+        <h3>hahaha</h3>
         <TextField
           id="email-basic"
           label="Username"
           variant="outlined"
+          className={styles.textInput}
           onChange={(event) => setUsername(event.target.value)}
         />
         <TextField
@@ -52,6 +54,7 @@ const FormLogin = () => {
           label="Senha"
           type="password"
           variant="outlined"
+          className={styles.textInput}
           onChange={(event) => setPassword(event.target.value)}
         />
 
@@ -64,7 +67,7 @@ const FormLogin = () => {
       </Stack>
       <br />
      
-      <Button variant="contained" onClick={handleLogin}>
+      <Button variant="contained" onClick={handleLogin} className={styles.button}>
         Entre
       </Button>
     

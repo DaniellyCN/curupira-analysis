@@ -3,4 +3,17 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0px 60px 0px 60px;
+
 }
+
+.textInput{
+    width: 400px; 
+}
+
+.button{
+    width:100px;
+    height:40px;
+
+}
+

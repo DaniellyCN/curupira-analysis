@@ -1,4 +1,4 @@
-import FormLogin from "../molecules/formLogin/index";
+import FormLogin from "../organisms/FormLogin";
 import login from "../../assets/images/login-image.png";
 import Image from "next/image";
 import styles from "../styles/login/styles.module.css"
