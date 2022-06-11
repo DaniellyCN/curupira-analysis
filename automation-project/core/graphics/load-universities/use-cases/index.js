@@ -1,4 +1,5 @@
 const { log, error } = require('../../../../adapters/logger');
+const { writeFile, normalizeText } = require('../../../../adapters/file');
 const automation = require('../../../../adapters/automation/puppeteer');
 
 const EvaluationArea = require('../../../entities/EvaluationArea');
@@ -46,16 +47,13 @@ const loadUniversities = async generalArea => {
   await mapUniversities({ automation, areas: evaluationArea.knowledgeAreas });
 
   console.log(evaluationArea);
-  var json = JSON.stringify(evaluationArea);
-  fs.writeFile(
-    `data/${new Date().getFullYear()}_universities.json`,
-    json,
-    'utf8',
-    function (err) {
-      if (err) throw err;
-      console.log('complete');
-    }
+  console.log(evaluationArea.knowledgeAreas);
+  const filename = normalizeText(
+    `data/universities/${new Date().getFullYear()}*${evaluationAreaName}*${
+      evaluationArea.knowledgeAreas[0].name
+    }*universities.json`
   );
+  writeFile({ filename, data: evaluationArea });
   await automation.finishAutomation();
 };
 

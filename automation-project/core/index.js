@@ -1,16 +1,25 @@
 const { loadUniversities } = require('./graphics/load-universities/use-cases');
 
-loadUniversities({
-  name: 'INTERDISCIPLINAR',
-  knowledgeAreas: ['INTERDISCIPLINAR'],
-});
+const load = async () => {
+  await loadUniversities({
+    name: 'INTERDISCIPLINAR',
+    knowledgeAreas: ['INTERDISCIPLINAR'],
+  });
 
-// loadUniversities({
-//   name: 'CIÊNCIA DA COMPUTAÇÃO',
-//   knowledgeAreas: ['CIÊNCIA DA COMPUTAÇÃO'],
-// })
+  await loadUniversities({
+    name: 'CIÊNCIA DA COMPUTAÇÃO',
+    knowledgeAreas: ['CIÊNCIA DA COMPUTAÇÃO'],
+  });
 
-// loadUniversities({
-//   name: 'ENGENHARIAS IV',
-//   knowledgeAreas: ['ENGENHARIA BIOMÉDICA', 'ENGENHARIA ELÉTRICA'],
-// })
+  await loadUniversities({
+    name: 'ENGENHARIAS IV',
+    knowledgeAreas: ['ENGENHARIA BIOMÉDICA'],
+  });
+
+  await loadUniversities({
+    name: 'ENGENHARIAS IV',
+    knowledgeAreas: ['ENGENHARIA ELÉTRICA'],
+  });
+};
+
+load();
