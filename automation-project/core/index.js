@@ -14,7 +14,7 @@ const load = async () => {
 
 const test = async () => {
   const programs = await load();
-  await loadPermanentCollaboratorProfessors(programs, '1999');
+  await loadPermanentCollaboratorProfessors(programs, '2022');
 }
 
 test();
