@@ -99,7 +99,7 @@ const ProfileDD = () => {
           </Box>
           <Divider />
           <Box p={2}>
-            <Link to="/">
+            <Link to="/signIn">
               <Button fullWidth variant="contained" color="primary">
                 Logout
               </Button>

@@ -6,7 +6,7 @@ function LoginContextProvider({ children }) {
   const [token, setToken] = useState("");
 
   return (
-    <LoginContext.Provider value={{ setToken }}>
+    <LoginContext.Provider value={{ token, setToken }}>
       {children}
     </LoginContext.Provider>
   );

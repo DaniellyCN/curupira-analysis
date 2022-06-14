@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import DefaultCard from "../../card/Card";
 import { baseUrl } from "../../../config/api";
+import { LoginContext } from "../../../context/LoginContext";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ArticlesByLanguage = () => {
   const [fetchedGraphData, setFetchedGraphData] = useState([]);
+  const {token} = useContext(LoginContext);
 
   const fetchGraphData = async () => {
     try {
@@ -15,9 +17,7 @@ const ArticlesByLanguage = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoieXVyeWFsZW5jYXIiLCJwZXJtaXNzaW9ucyI6WyJ0aGVzaXMtYnktbGFuZ3VhZ2U6bGlzdCJdfSwiaWF0IjoxNjU0OTgwNjUzLCJleHAiOjE2NTQ5ODQyNTN9.vO45VWn3hE1dAD363Iygphtdv6_LyPKlGn5M-cRSZd4",
-            // TO-DO: Replace with real token
+            Authorization: token,
           },
         }
       );

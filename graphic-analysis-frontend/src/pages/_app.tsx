@@ -5,7 +5,7 @@ import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../theme/createEmotionCache";
 import Head from "next/head";
-import  LoginContext  from "../context/LoginContext";
+import LoginContext from "../context/LoginContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,8 +18,8 @@ function MyApp(props: any) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <LoginContext>
-          <CssBaseline />
           <Component {...pageProps} />
         </LoginContext>
       </ThemeProvider>
