@@ -1,5 +1,4 @@
 class ProfessorProgram {
-  
   constructor(program, amountPermanents, amountVisitors, amountCollaborators) {
     this.program = program;
     this.amountVisitors = amountVisitors;

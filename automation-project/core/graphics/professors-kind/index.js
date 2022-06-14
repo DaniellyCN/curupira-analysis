@@ -1,8 +1,8 @@
-const { writeFile } = require('../../../../adapters/file');
-const automation = require('../../../../adapters/automation/puppeteer');
+const { writeFile } = require('../../../adapters/file');
+const automation = require('../../../adapters/automation/puppeteer');
 
-const components = require('../../../components');
-const ProfessorProgram = require('../../../entities/ProfessorProgram');
+const components = require('../../components');
+const ProfessorProgram = require('../../entities/ProfessorProgram');
 
 /**
  * Method to load collaborator type by program.
@@ -25,6 +25,7 @@ const loadPermanentCollaboratorProfessors = async (programs, year) => {
     } catch (error) {
       notProcessed.push(program);
     }
+    break;
   }
 
   const mergedPrograms = [...processed, ...alreadyDonePrograms];
@@ -112,11 +113,11 @@ const isPermanent = text => text.includes('PERMANENTE');
 const isColaborator = text => text.includes('COLABORADOR');
 
 const getFilename = year => {
-  return `${__dirname}/../../../../data/processed/${year}_professors_type_by_program.json`;
+  return `${__dirname}/../../../data/processed/${year}_professors_type_by_program.json`;
 };
 
 const getErrorFilename = year => {
-  return `${__dirname}/../../../../data/processed/${year}_professors_type_by_program_error.json`;
+  return `${__dirname}/../../../data/processed/${year}_professors_type_by_program_error.json`;
 };
 
 const loadOrCreateProcessedFile = year => {

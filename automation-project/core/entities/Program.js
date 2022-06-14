@@ -1,10 +1,14 @@
 class Program {
-  
-  constructor(name, code, university, types) {
+  constructor(name, code, university, types, status = 'IN OPERATION') {
     this.name = name;
     this.code = code;
-    this.university = university;
     this.types = types;
+    this.status = status;
+    this.university = university;
+  }
+
+  setStatus(status) {
+    this.status = status;
   }
 }
 
