@@ -1,12 +1,12 @@
-const { log } = require('../../../../adapters/logger');
-const { writeFile, normalizeText } = require('../../../../adapters/file');
-const automation = require('../../../../adapters/automation/puppeteer');
+const { log } = require('../../../automation-project/adapters/logger');
+const { writeFile, normalizeText } = require('../../../automation-project/adapters/file');
+const automation = require('../../../automation-project/adapters/automation/puppeteer');
 
 const EvaluationArea = require('../../../entities/EvaluationArea');
 const KnowledgeArea = require('../../../entities/KnowledgeArea');
-const University = require('../../../entities/University');
+const University = require('../../../automation-project/core/entities/University');
 
-const components = require('../../../components');
+const components = require('../../../automation-project/core/components');
 
 /**
  * Method to load univesities by course path

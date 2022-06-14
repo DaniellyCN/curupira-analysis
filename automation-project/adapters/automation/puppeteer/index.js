@@ -4,10 +4,11 @@ const Automation = require('../automation');
 const { log } = require('../../logger');
 
 class Puppeteer extends Automation {
-  async createAutomationInstance() {
+  async createAutomationInstance(headless = true) {
     log('Starting browser');
-    this.browser = await puppeteer.launch({ headless: true });
+    this.browser = await puppeteer.launch({ headless });
     this.page = await this.browser.newPage();
+    await this.page.setViewport({ width: 1366, height: 768});
     log('Browser Started');
   }
 
@@ -81,9 +82,53 @@ class Puppeteer extends Automation {
     await element.click();
   }
 
+  async selectByXpath(xpath) {
+    await this.page.waitForXPath(xpath);
+    const [element] = await this.page.$x(xpath);
+    await element.evaluate(element => element.setAttribute('selected', true));
+  }
+
   async typeBySelector(selector, text) {
     await this.page.waitForSelector(selector);
     await this.page.type(selector, text);
+  }
+
+  async getOptionByCssSelector(selector, text) {
+    const options = await (await this.page.$(selector)).$$('option');
+
+    for (let index = 0; index < options.length; index++) {
+      const optionText = await options[index].evaluate((e) => e.text);
+      if (optionText.includes(text)) return index;
+    }
+    
+    return 0;
+  }
+
+  async getOptionValue(selector, text) {
+    const options = await (await this.page.$(selector)).$$('option');
+
+    for (let index = 0; index < options.length; index++) {
+      const optionText = await options[index].evaluate((e) => e.text);
+      if (optionText.includes(text)) {
+        const value = await options[index].evaluate((e) => e.value)
+        return value;
+      }
+    }
+    
+    return '-1';
+  }
+
+  async setSelectValue(selector, value) {
+    const element = await this.page.$(selector);
+    await element.select(value);
+  }
+
+  async pressArrowDown () {
+    await this.page.keyboard.press('ArrowDown');
+  }
+
+  async pressEnter () {
+    await this.page.keyboard.press('Enter');
   }
 
   async typeByXpath(xpath, text) {

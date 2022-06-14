@@ -1,4 +1,5 @@
 const menuComponents = {
+  COLLECT_CAPES_DIV: 'div[id="blocoColeta"]',
   EVALUATED_COURSES: "img[src='/sucupira/images/ico-cursos.png']",
   BY_EVALUATION_AREA: "//a[contains(text(), 'Por Área de Avaliação')]",
 };
@@ -6,8 +7,20 @@ const menuComponents = {
 const genericComponents = {
   TABLE_CONTENT: '//tbody/tr',
   TABLE_ITEM: "//a[contains(text(), 'XXX')]",
-  ACCEPT_BUTTON: "//button[contains(text(), 'ACEITO')]"
+  ACCEPT_BUTTON: "//button[contains(text(), 'ACEITO')]",
+  OPTION_CONTAINS: "//option[contains(text(), 'XXX')]",
 };
+
+const collectComponents = {
+  PROFESSORS_LINK: "//a[contains(text(), 'ocentes')]"
+}
+
+const professorsFormComponents = {
+  UNIVERSITY_PROFESSOR_INPUT: "input[id*='inst:input']",
+  PROGRAM_SELECT: `select[onclick="check('form:checkPrograma')"]`,
+  SEARCH_PROFESSORS_BUTTON: 'input[id="form:consultar"]',
+  PROFESSOR_TYPE_COLUMN: '//table/tbody/tr[XXX]/td[2]',
+}
 
 const evaluationTableComponents = {
   TABLE_EVALUATION_AMOUNT_MASTER: '//tbody/tr[XXX]/td[10]',
@@ -34,8 +47,10 @@ const universityTableComponents = {
 
 module.exports = {
   ...menuComponents,
+  ...collectComponents,
   ...genericComponents,
   ...evaluationTableComponents,
   ...knowledgeTableComponents,
   ...universityTableComponents,
+  ...professorsFormComponents,
 };
