@@ -8,13 +8,13 @@ const loadAndWritePrograms = async () => {
 }
 
 const load = async () => {
-  const programs = await processPrograms(__dirname + '/../data/lake/programs.csv');
+  const programs = require(__dirname + '/../data/processed/programs.json');
   return programs;
 }
 
 const test = async () => {
   const programs = await load();
-  await loadPermanentCollaboratorProfessors(programs);
+  await loadPermanentCollaboratorProfessors(programs, '1999');
 }
 
 test();

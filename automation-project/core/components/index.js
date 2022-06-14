@@ -20,6 +20,7 @@ const professorsFormComponents = {
   PROGRAM_SELECT: `select[onclick="check('form:checkPrograma')"]`,
   SEARCH_PROFESSORS_BUTTON: 'input[id="form:consultar"]',
   PROFESSOR_TYPE_COLUMN: '//table/tbody/tr[XXX]/td[2]',
+  PROFESSORS_YEAR: 'input[id*=ano]',
 }
 
 const evaluationTableComponents = {

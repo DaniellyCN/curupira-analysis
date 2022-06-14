@@ -7,7 +7,7 @@ const ProgramType = require('../../core/entities/ProgramType');
 
 const writeFile = ({ filename, data }) => {
   const formatedData = JSON.stringify(data);
-  fs.writeFile(filename, formatedData, 'utf8', finish);
+  fs.writeFileSync(filename, formatedData, 'utf8', finish);
 };
 
 const finish = error =>

@@ -144,6 +144,11 @@ class Puppeteer extends Automation {
     return text;
   }
 
+  async clearField(selector) {
+    const element = await this.page.$(selector);
+    await element.evaluate(element => element.value = '');
+  }
+
   async getTextByXpath(xpath) {
     await this.page.waitForXPath(xpath);
     const [element] = await this.page.$x(xpath);
