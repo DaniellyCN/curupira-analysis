@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Box sx={{ p: 3, textAlign: "center" }}>
       <Typography>
-        © 2022 Curupira
+        © {new Date().getFullYear()} Curupira
       </Typography>
     </Box>
   );
