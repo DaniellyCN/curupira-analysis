@@ -34,7 +34,7 @@ const loadPermanentCollaboratorProfessors = async (programs, year) => {
 };
 
 const getProfessors = async (program, year) => {
-  await automation.createAutomationInstance(false);
+  await automation.createAutomationInstance();
 
   try {
     await automation.goTo('https://sucupira.capes.gov.br/sucupira/');

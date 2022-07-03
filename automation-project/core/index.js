@@ -40,10 +40,6 @@ const saveOnlyActivePrograms = async () => {
 
 const loadGraphics = async () => {
   const programs = await loadActivePrograms();
-  const allPrograms = await loadAllPrograms();
-  // await loadAndWritePrograms();
-
-  // const programs = await saveOnlyActivePrograms();
 
   // Professors kinds
   // await loadPermanentCollaboratorProfessors(programs, '2017');
@@ -51,10 +47,7 @@ const loadGraphics = async () => {
   // await loadPermanentCollaboratorProfessors(programs, '2019');
   // await loadPermanentCollaboratorProfessors(programs, '2020');
   // await loadPermanentCollaboratorProfessors(programs, '2021');
-  // await loadPermanentCollaboratorProfessors(programs, '2022');
-
-  console.log(programs.length);
-  console.log(allPrograms.length);
+  await loadPermanentCollaboratorProfessors(programs, '2022');
 };
 
 loadGraphics();
