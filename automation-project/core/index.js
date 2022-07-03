@@ -1,19 +1,49 @@
-const { processPrograms, writeFile } = require('../adapters/file');
-const { loadPermanentCollaboratorProfessors } = require('./graphics/professors-kind');
+const {
+  processPrograms,
+  writeFile,
+  filterByFile,
+} = require('../adapters/file');
 
-const loadAndWritePrograms = async () => {
-  const programs = await processPrograms(__dirname + '/../data/lake/all_programs.csv');
-  writeFile({filename: __dirname + '/../data/processed/all_programs.json', data: programs })
-  return programs;
-}
+const {
+  loadPermanentCollaboratorProfessors,
+} = require('./graphics/professors-kind');
 
-const load = async () => {
-  const programs = require(__dirname + '/../data/processed/all_programs.json');
+const pathCsvAllPrograms = `${__dirname}/../data/lake/all_programs.csv`;
+const pathCsvInOperationPrograms = `${__dirname}/../data/lake/in_operation_programs.csv`;
+
+const pathJsonAllPrograms = `${__dirname}/../data/processed/all_programs.json`;
+const pathJsonActivePrograms = `${__dirname}/../data/processed/active_programs.json`;
+
+const loadActivePrograms = async () => {
+  const programs = require(pathJsonActivePrograms);
   return programs;
-}
+};
+
+const loadAllPrograms = async () => {
+  const programs = require(pathJsonAllPrograms);
+  return programs;
+};
+
+
+const saveOnlyActivePrograms = async () => {
+  const programs = await processPrograms(pathCsvAllPrograms);
+  writeFile({ filename: pathJsonAllPrograms, data: programs });
+
+  const activePrograms = await filterByFile({
+    programs,
+    csvFilter: pathCsvInOperationPrograms,
+  });
+
+  writeFile({ filename: pathJsonActivePrograms, data: activePrograms });
+  return activePrograms;
+};
 
 const loadGraphics = async () => {
-  const programs = await load();
+  const programs = await loadActivePrograms();
+  const allPrograms = await loadAllPrograms();
+  // await loadAndWritePrograms();
+
+  // const programs = await saveOnlyActivePrograms();
 
   // Professors kinds
   // await loadPermanentCollaboratorProfessors(programs, '2017');
@@ -21,7 +51,10 @@ const loadGraphics = async () => {
   // await loadPermanentCollaboratorProfessors(programs, '2019');
   // await loadPermanentCollaboratorProfessors(programs, '2020');
   // await loadPermanentCollaboratorProfessors(programs, '2021');
-  await loadPermanentCollaboratorProfessors(programs, '2022');
-}
+  // await loadPermanentCollaboratorProfessors(programs, '2022');
+
+  console.log(programs.length);
+  console.log(allPrograms.length);
+};
 
 loadGraphics();

@@ -23,9 +23,9 @@ const loadPermanentCollaboratorProfessors = async (programs, year) => {
       const professors = await getProfessors(program, year);
       processed.push(professors);
     } catch (error) {
+      console.log(error);
       notProcessed.push(program);
     }
-    break;
   }
 
   const mergedPrograms = [...processed, ...alreadyDonePrograms];
@@ -34,15 +34,16 @@ const loadPermanentCollaboratorProfessors = async (programs, year) => {
 };
 
 const getProfessors = async (program, year) => {
-  await automation.createAutomationInstance();
+  await automation.createAutomationInstance(false);
 
   try {
     await automation.goTo('https://sucupira.capes.gov.br/sucupira/');
     await automation.click('cssSelector', components.COLLECT_CAPES_DIV);
     await automation.click('xpath', components.ACCEPT_BUTTON);
 
-    await automation.click('xpath', components.PROFESSORS_LINK);
     await automation.sleep(2000);
+    await automation.click('xpath', components.PROFESSORS_LINK);
+    await automation.sleep(5000);
     await automation.clearField(components.PROFESSORS_YEAR);
     await automation.sleep(500);
     await automation.type('cssSelector', components.PROFESSORS_YEAR, year);
