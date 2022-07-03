@@ -43,7 +43,7 @@ const getProfessors = async (program, year) => {
 
     await automation.sleep(2000);
     await automation.click('xpath', components.PROFESSORS_LINK);
-    await automation.sleep(5000);
+    await automation.sleep(6000);
     await automation.clearField(components.PROFESSORS_YEAR);
     await automation.sleep(500);
     await automation.type('cssSelector', components.PROFESSORS_YEAR, year);
