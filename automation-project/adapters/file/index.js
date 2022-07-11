@@ -77,4 +77,27 @@ const createTypes = ({ meRate, doRate, mpRate, dpRate }) => {
   return types;
 };
 
-module.exports = { writeFile, normalizeText, processPrograms };
+const filterByFile = async ({programs, csvFilter }) => {
+  let filteredPrograms = [];
+  const fileStream = fs.createReadStream(csvFilter);
+
+  const lines = readline.createInterface({
+    input: fileStream,
+    crlfDelay: Infinity,
+  });
+
+  for await (const line of lines) {
+    const programCode = line.split(';')[0].trim();
+
+    // Código;Programa;Instituição de Ensino;Área de Avaliação;Área Básica;Situação;Modalidade;ME;DO;MP;DP
+    const [program] = programs.filter(({ code }) => code == programCode);
+    if(!program) continue;
+
+    const exists = filteredPrograms.find(({ code }) => code == programCode);
+    if(!exists) filteredPrograms = [...filteredPrograms, program]
+  }
+
+  return filteredPrograms;
+}
+
+module.exports = { writeFile, normalizeText, processPrograms, filterByFile };
