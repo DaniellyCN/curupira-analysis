@@ -4,12 +4,19 @@ const Automation = require('../automation');
 const { log } = require('../../logger');
 
 class Puppeteer extends Automation {
-  async createAutomationInstance(headless = true) {
+  async createAutomationInstance() {
     log('Starting browser');
-    this.browser = await puppeteer.launch({ headless });
+    this.browser = await puppeteer.launch({ headless : false });
     this.page = await this.browser.newPage();
     await this.page.setViewport({ width: 1366, height: 768});
     log('Browser Started');
+  }
+
+  async downloadPath(path){
+    await this.page._client.send('Page.setDownloadBehavior', {
+      behavior: 'allow',
+      downloadPath: path
+  });
   }
 
   async goTo(url) {
